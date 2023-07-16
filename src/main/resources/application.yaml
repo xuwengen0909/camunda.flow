@@ -1,0 +1,34 @@
+#spring.datasource.url: jdbc:h2:file:./camunda-h2-database
+server:
+  port: 7700
+camunda:
+  bpm:
+    admin-user:
+      id: admin
+      password: 123456
+    filter:
+      create: All tasks
+    #禁止自动部署resources下面的bpmn文件
+    auto-deployment-enabled: false
+    holidayProcessId: holiday-process
+    url: http://localhost:7700
+    activeTask: ${bpm.url}/engine-rest/task?processInstanceBusinessKey=
+    completeTask: ${bpm.url}/engine-rest/task/$TASK_ID/complete
+
+
+spring:
+  application:
+    name: spring-boot-camunda-demo2
+  datasource:
+    #url: jdbc:mysql://127.0.0.1:3306/camunda717?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&useOldAliasMetadataBehavior=true
+    url: jdbc:mysql://127.0.0.1:3306/camunda717?characterEncoding=UTF-8&serverTimezone=GMT%2b8&useSSL=false&nullCatalogMeansCurrent=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: dev
+    password: Aa123456
+
+    # postgresql
+#    url: jdbc:postgresql://39.103.217.57:15432/camunda3?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&useSSL=false
+#    username: postgres
+#    password: 123abc
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    initialization-mode: alway
